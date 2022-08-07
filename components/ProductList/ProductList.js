@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import Products from "../../data/products.json";
 import Product from "../Product";
@@ -13,16 +13,28 @@ const ProductList = ({ filter }) => {
       );
     });
     setFilteredList(filtered);
-    console.log(filter);
   }, [filter]);
 
+  const renderItem = (item) => {
+    return <Product item={item.item} />;
+  };
+
   return (
-    <View>
-      {filteredList.map((item) => {
-        return <Product item={item} key={item.id} />;
-      })}
-    </View>
+    <FlatList
+      data={filteredList}
+      renderItem={renderItem}
+      style={styles.list}
+      keyExtractor={(item) => item.id}
+      numColumns={2}
+      horizontal={false}
+    />
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default ProductList;

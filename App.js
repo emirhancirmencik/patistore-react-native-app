@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   search: {
-    backgroundColor: "gray",
+    backgroundColor: "#CCC",
     color: "white",
     borderRadius: 15,
     paddingLeft: 10,
